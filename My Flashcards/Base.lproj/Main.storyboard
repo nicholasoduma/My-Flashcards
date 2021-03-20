@@ -52,6 +52,22 @@
                                     <segue destination="4da-Gz-KSx" kind="presentation" id="Wwr-gd-5ug"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lI3-Qt-mQl">
+                                <rect key="frame" x="90" y="701" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Prev"/>
+                                <connections>
+                                    <action selector="didTapOnPrev:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g6E-SA-LCH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40z-Md-Ckg">
+                                <rect key="frame" x="305" y="701" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="didTapOnNext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ajT-WP-Yi0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -59,6 +75,8 @@
                     <connections>
                         <outlet property="backLabel" destination="od1-CU-Azl" id="ZbH-wX-I6x"/>
                         <outlet property="frontLabel" destination="leY-5Z-I0o" id="5iX-uM-4De"/>
+                        <outlet property="nextButton" destination="40z-Md-Ckg" id="hB4-F7-pte"/>
+                        <outlet property="prevButton" destination="lI3-Qt-mQl" id="5Dg-zg-iW7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
