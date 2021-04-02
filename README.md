@@ -3,7 +3,7 @@
 ## Lab 4
 
 ### App Description
-`This app does a cool flip animation on the flashcards!
+This app does a cool flip animation on the flashcards!
 
 ### App Walk-though
 
