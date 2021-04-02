@@ -44,6 +44,9 @@ class ViewController: UIViewController {
         creationController.flashcardsController = self;
     }
     @IBOutlet weak var prevButton: UIButton!
+   
+    @IBOutlet weak var card: UIView!
+    
     @IBOutlet weak var nextButton: UIButton!
     
     @IBAction func didTapOnPrev(_ sender: Any) {
@@ -52,6 +55,8 @@ class ViewController: UIViewController {
          updateLabels()
         
         updateNextPrevButtons()
+        
+        animateCardOut()
         
     }
     
@@ -63,20 +68,29 @@ class ViewController: UIViewController {
         
         updateNextPrevButtons()
         
+        animateCardOut()
     }
     
     
     @IBAction func didTapOnFlashcard(_ sender: Any) {
-        if(hide==false){
-            frontLabel.isHidden=false
-            backLabel.isHidden = true
-            hide=true
-        } else if(hide==true){
-            frontLabel.isHidden=true
-            backLabel.isHidden=false
-            hide=false
+        flipFlashcard() }
+    
+        
+        
+        func flipFlashcard() {
+            UIView.transition(with: card, duration: 0.3, options: .transitionFlipFromRight, animations: {
+                                if(self.hide==false){
+                                    self.frontLabel.isHidden=false
+                                    self.backLabel.isHidden = true
+                                    self.hide=true
+                                } else if(self.hide==true){
+                                    self.frontLabel.isHidden=true
+                                    self.backLabel.isHidden=false
+                                    self.hide=false
+                
+            }
         }
-    }
+        )    }
     func updateLabels()
     {
         //Get current flashcard
@@ -127,6 +141,34 @@ class ViewController: UIViewController {
                    
                 }
             }
+    func animateCardOut() {
+        UIView.animate(withDuration: 0.3, animations: { self.card.transform = CGAffineTransform.identity.translatedBy(x: -300.0, y: 0.0)}, completion: { finished in
+         
+    
+            // Update labels
+            self.updateLabels()
+            
+            // Run other animation
+            self.animateCardIn()
+        })
+    }
+    
+    func animateCardIn() {
+        
+        // Start on the right side (don't animate this)
+        card.transform = CGAffineTransform.identity.translatedBy(x: 300.0, y: 0.0)
+        
+        UIView.animate(withDuration: 0.3) {
+            self.card.transform = CGAffineTransform.identity
+            
+            self.updateLabels()
+            
+            
+            
+        }
+    }
+    
+    
     func saveAllFlashcardsToDisk() {
      
         let dictionaryArray = flashcards.map { (card) -> [String : String] in
@@ -160,5 +202,6 @@ class ViewController: UIViewController {
 
 }
 }
-}
 
+
+}
